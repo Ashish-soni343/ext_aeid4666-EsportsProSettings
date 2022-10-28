@@ -17,7 +17,7 @@ class RecordsSpider(CrawlSpider):
     source_country = 'Global'
     context_identifier = ''
     record_created_by = ""
-    execution_id = ""  # This will be taken automatically from zyte, for now this is hardcoded
+    execution_id = "621614"  # This will be taken automatically from zyte, for now this is hardcoded
     feed_code = "AEID-4666"
     type = ""
 
