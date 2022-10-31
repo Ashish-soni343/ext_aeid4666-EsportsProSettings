@@ -2,6 +2,7 @@
 import scrapy
 import datetime
 
+from os import environ
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
 from ..items import ProsettingsItem
@@ -95,7 +96,8 @@ class RecordsSpider(CrawlSpider):
                             item["Source_country"] = self.source_country
                             item["Context_identifier"] = response.url.replace('https://prosettings.net/', "").replace('pro-settings-gear-list/', "").replace('-', " ")
                             item["Record_create_by"] = self.name
-                            item["Execution_id"] = self.execution_id
+                            item['Execution_id'] = environ.get('SHUB_JOBKEY', None)
+                            #item["Execution_id"] = self.execution_id
                             item["Page_Link"] = response.url
                             item["Record_create_dt"] = datetime.datetime.utcnow().strftime('%Y-%m-%d %T')
                             item["Type"] = response.url.replace('https://prosettings.net/', "").replace('pro-settings-gear-list/', "").replace('-', " ")
